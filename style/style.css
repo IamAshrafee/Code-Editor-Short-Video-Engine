@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --font-family: 'inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #171717;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.left-container {
+    height: 800px;
+    width: 450px;
+
+}
+
+.middle-container {
+    height: 835px;
+    width: 470px;
+    background-color: #000000;
+}
+
+.right-container {
+    height: 800px;
+    width: 450px;
+    border: 1px solid wheat;
+}
+
+.container {}
+
+.type-box-container {
+
+}
+
+.type-box-header {
+    height: 40px;
+    width: 100%;
+    background-color: #292929;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.type-box-header p {
+    color: white;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    height: max-content;
+    width: max-content;
+}
+
+.type-box-header-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+    width: max-content;
+    background-color: #1e1e1e;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0px 15px 0px 0px;
+}
+
+.type-box {
+    width: 100%;
+}
+
+.type-box textarea {
+    width: 100% !important;
+    height: 320px !important;
+    background-color: #1e1e1e;
+    border: none;
+    color: white;
+    padding: 20px 16px 16px 16px;
+    resize: none;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.type-box textarea:focus {
+    outline: none;
+}
+
+.type-box textarea::placeholder {
+    color: rgba(255, 255, 255, 0.281);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.type-box textarea::-webkit-scrollbar {
+    width: 13px;
+    background-color: #29292957;
+}
+
+.type-box textarea::-webkit-scrollbar-thumb {
+    background-color: #171717c5;
+    cursor: pointer;
+
+}
+
+.type-box textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #171717;
+}
+
+.type-box-icon {
+    color: white;
+    margin-left: 15px;
+}
