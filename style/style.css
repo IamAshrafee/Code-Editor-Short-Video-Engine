@@ -10,6 +10,14 @@
     box-sizing: border-box;
 }
 
+/* Root CSS  */
+
+.display-alighn-center {
+    display: flex;
+    align-items: center;
+}
+
+
 body {
     background-color: #171717;
     display: flex;
@@ -20,6 +28,7 @@ body {
     height: 100vh;
 }
 
+
 .left-container {
     height: 800px;
     width: 450px;
@@ -29,7 +38,7 @@ body {
 .middle-container {
     height: 835px;
     width: 470px;
-    background-color: #000000;
+    background-color: #616161;
 }
 
 .right-container {
@@ -38,10 +47,14 @@ body {
     border: 1px solid wheat;
 }
 
+
 .container {}
 
-.type-box-container {
+/* Left side Started */
 
+/* Type box container CSS */
+.type-box-container {
+    margin: 0px 0px 20px 0px;
 }
 
 .type-box-header {
@@ -118,4 +131,158 @@ body {
 .type-box-icon {
     color: white;
     margin-left: 15px;
+}
+
+/* type box container End here */
+
+/* Buttons box container CSS */
+.buttons-box-container {}
+
+.typing-speed-button {
+    background-color: #292929;
+    border-radius: 10px;
+    width: max-content;
+    height: max-content;
+    padding: 6px 10px 6px 5px;
+}
+
+.typing-speed-button button {
+    border: none;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    background-color: transparent;
+    margin: 0px 8px;
+    color: rgba(255, 255, 255, 0.815);
+   
+}
+
+.typing-speed-button input {
+    height: 35px;
+    width: 65px;
+    border: none;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    background-color: #171717;
+    margin: 0px 8px;
+    color: white;
+    text-align: center;
+    border: 0.5px solid white;
+    border-radius: 10px;
+}
+
+.typing-speed-button input:focus {
+    outline: none;
+    background-color: #000000;
+}
+
+.typing-speed-button input::-webkit-outer-spin-button,
+.typing-speed-button input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Buttons box container End here */
+
+/* Middle box container CSS */
+
+.middle-box-container {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+
+/* authorbar section started here  */
+
+.authorbar-section {
+    background-color: #292929;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 46px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.reload-icon {
+    margin-left: 10px;
+}
+
+.reload-icon img {
+    width: auto;
+    height: 31px;
+}
+
+.authorbar {
+    display: flex;
+    flex-direction: row;
+    background-color: #0c0c0c;
+    height: 35px;
+    width: 270px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 20px;
+    justify-content: space-between;
+}
+
+.world-icon {}
+
+.world-icon img {
+    width: auto;
+    height: 23px;
+}
+
+.author-text {}
+
+.author-text p {
+    color: white;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 300;
+    height: max-content;
+    width: max-content;
+}
+
+.star-icon img {
+    width: auto;
+    height: 21px;
+}
+
+.star-icon {}
+
+.three-dot-icon {}
+
+.three-dot-icon img {
+    width: auto;
+    height: 22px;
+}
+
+.youtube-icon {}
+
+.youtube-icon img {
+    width: auto;
+    height: 35px;
+}
+
+/* Output box started here */
+
+.output-section {}
+
+.output-box {
+    height: 240px;
+    width: 100%;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+}
+
+.output-inner-box {
+    border-radius: 10px;
+    height: 98%;
+    width: 98%;
+    background-color: #171717;
+}
+
+.caption {
+
 }

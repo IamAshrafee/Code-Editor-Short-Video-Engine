@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar with Icons</title>
+    <style>
+        /* General styles for the body */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #202124;
+        }
+
+        /* Styles for the top bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #3C4043;
+            padding: 6px 10px;
+        }
+
+        /* Styles for the search box container */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #303134;
+            border-radius: 18px;
+            padding: 0 8px;
+            width: 500px;
+            height: 32px;
+        }
+
+        /* Styles for the search icon */
+        .search-icon {
+            color: white;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        /* Styles for the input field */
+        .search-input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Style for the icons on the right */
+        .right-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-icons img {
+            margin-left: 12px;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+        }
+
+        /* Style for additional options (3 dots menu) */
+        .menu-icon {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top bar container -->
+    <div class="top-bar">
+        <!-- Search box container -->
+        <div class="search-box">
+            <!-- Search icon -->
+            <span class="search-icon">🔍</span>
+            <!-- Input field -->
+            <input type="text" class="search-input" placeholder="Search or enter web address">
+        </div>
+
+        <!-- Right-side icons -->
+        <div class="right-icons">
+            <!-- Icons: Replace with your own images or icons -->
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Refresh">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/star.png" alt="Favorite">
+            <!-- Three dots menu icon -->
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/menu.png" class="menu-icon" alt="Menu">
+        </div>
+    </div>
+</body>
+</html>
