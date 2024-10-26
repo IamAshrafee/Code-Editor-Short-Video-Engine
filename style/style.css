@@ -2,6 +2,9 @@
 
 :root {
     --font-family: 'inter', sans-serif;
+    --output-background-color: #ffff;
+    --caption-color: #000000;
+
 }
 
 * {
@@ -38,7 +41,8 @@ body {
 .middle-container {
     height: 835px;
     width: 470px;
-    background-color: #616161;
+    background-color: #292929;
+    flex-shrink: 0;
 }
 
 .right-container {
@@ -132,6 +136,63 @@ textarea::-webkit-scrollbar-thumb {
     margin-left: 15px;
 }
 
+.logger-showing-container {
+    margin: 0px 0px 20px 0px;
+}
+
+.logger-showing-box-header {
+    height: 40px;
+    width: 100%;
+    background-color: #292929;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.logger-showing-box-header-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+    width: max-content;
+    background-color: #1e1e1e;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0px 15px 0px 0px;
+}
+
+.logger-showing-box-header-container p {
+    color: white;
+    font-family: var(--font-family);
+    margin-left: 15px;
+}
+
+.logger-showing-box {
+    width: 100%;
+}
+
+.logger-showing-box textarea {
+    width: 100% !important;
+    height: 235px !important;
+    background-color: #1e1e1e;
+    border: none;
+    color: rgba(0, 255, 0, 0.473);
+    padding: 20px 16px 16px 16px;
+    resize: none;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.logger-showing-box textarea:focus {
+    outline: none;
+}
+
+.logger-showing-box textarea::placeholder {
+    color: rgba(255, 255, 255, 0.281);
+    font-size: 14px;
+    font-weight: 300;
+}
+
 /* type box container End here */
 
 /* Buttons box container CSS */
@@ -188,6 +249,7 @@ textarea::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .start-typing-button button {
@@ -215,7 +277,7 @@ textarea::-webkit-scrollbar-thumb {
 .middle-box-container {
     width: 100%;
     height: 100%;
-    padding: 10px;
+    padding: 15px;
 }
 
 /* authorbar section started here  */
@@ -306,15 +368,23 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     height: 98%;
     width: 98%;
-    background-color: #171717;
+    background-color: var(--output-background-color);
+    position: relative;
 }
 
-.caption {}
+.caption {
+    color: var(--caption-color);
+    font-size: 16px;
+    margin: 15px 0px 0px 0px;
+    text-align: center;
+    font-family: var(--font-family);
+    position: absolute;
+    width: 100%;
+}
 
-#output{
+#output {
     width: 100%;
     height: 100%;
-    background-color: ;
     border: none;
     outline: none;
 }
@@ -336,15 +406,16 @@ textarea::-webkit-scrollbar-thumb {
     justify-content: start;
     align-items: center;
     width: max-content;
-    background-color: #171717;
+    background-color: #181818;
     margin-left: 5px;
     padding: 0px 15px;
     cursor: pointer;
+    padding-bottom: 3px;
 }
 
 .html-language-tab img {
     width: auto;
-    height: 18px;
+    height: 16px;
 
 }
 
@@ -355,7 +426,9 @@ textarea::-webkit-scrollbar-thumb {
     color: white;
     margin: 0px 5px;
     cursor: pointer;
-
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 300;
 }
 
 .css-language-tab {
@@ -365,16 +438,17 @@ textarea::-webkit-scrollbar-thumb {
     justify-content: start;
     align-items: center;
     width: max-content;
-    background-color: #171717;
+    background-color: #181818;
     margin-left: 5px;
     padding: 0px 15px;
     cursor: pointer;
+    padding-bottom: 3px;
 
 }
 
 .css-language-tab img {
     width: auto;
-    height: 18px;
+    height: 16px;
 
 }
 
@@ -385,6 +459,9 @@ textarea::-webkit-scrollbar-thumb {
     color: white;
     margin: 0px 5px;
     cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 300;
 }
 
 .javascript-language-tab {
@@ -394,15 +471,17 @@ textarea::-webkit-scrollbar-thumb {
     justify-content: start;
     align-items: center;
     width: max-content;
-    background-color: #171717;
+    background-color: #181818;
     margin-left: 5px;
     padding: 0px 15px;
     cursor: pointer;
+    padding-bottom: 3px;
+
 }
 
 .javascript-language-tab img {
     width: auto;
-    height: 18px;
+    height: 16px;
 
 }
 
@@ -413,6 +492,9 @@ textarea::-webkit-scrollbar-thumb {
     color: white;
     margin: 0px 5px;
     cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 300;
 
 }
 
@@ -423,9 +505,13 @@ textarea::-webkit-scrollbar-thumb {
 /* Code editor box CSS start here  */
 
 #editor {
-    width: 100%;
-    height: 500px;
-    border-radius: 0px 0px 10px 10px;
+    width: 101.5%;
+    height:485px;
+    border-radius: 0px 10px 10px 10px;
+}
+
+.code-editor-section {
+    margin: 0px 5px 0px 0px;
 }
 
 /* Right container started here */
@@ -450,7 +536,7 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     width: 100%;
     padding: 0px 10px;
-    border: 0.5px solid white;
+    border: 0.5px solid rgba(255, 255, 255, 0.356);
     margin: 0px 0px 15px;
 }
 

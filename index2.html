@@ -3,94 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bar with Icons</title>
+    <title>Live Code Editor with HTML, CSS, and JavaScript</title>
     <style>
-        /* General styles for the body */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #202124;
-        }
-
-        /* Styles for the top bar */
-        .top-bar {
+            margin: 0;
+            padding: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            background-color: #3C4043;
-            padding: 6px 10px;
+            overflow: hidden;
+            height: 100vh;
         }
-
-        /* Styles for the search box container */
-        .search-box {
+        .container {
             display: flex;
-            align-items: center;
-            background-color: #303134;
-            border-radius: 18px;
-            padding: 0 8px;
-            width: 500px;
-            height: 32px;
-        }
-
-        /* Styles for the search icon */
-        .search-icon {
-            color: white;
-            font-size: 16px;
-            margin-right: 8px;
-        }
-
-        /* Styles for the input field */
-        .search-input {
-            background-color: transparent;
-            border: none;
-            color: white;
-            outline: none;
             width: 100%;
-            font-size: 14px;
+            height: 90vh;
         }
-
-        /* Style for the icons on the right */
-        .right-icons {
-            display: flex;
-            align-items: center;
+        .editor-container {
+            width: 33%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
         }
-
-        .right-icons img {
-            margin-left: 12px;
-            cursor: pointer;
-            height: 20px;
-            width: 20px;
+        #preview {
+            width: 50%;
+            height: 100%;
+            border: 1px solid #ddd;
         }
-
-        /* Style for additional options (3 dots menu) */
-        .menu-icon {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            margin-left: 10px;
+        .editor-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .editor {
+            width: 100%;
+            height: 90%;
+            border: 1px solid #ddd;
+            font-size: 16px;
         }
     </style>
+    <!-- Ace Code Editor CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js" 
+            integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <!-- Top bar container -->
-    <div class="top-bar">
-        <!-- Search box container -->
-        <div class="search-box">
-            <!-- Search icon -->
-            <span class="search-icon">🔍</span>
-            <!-- Input field -->
-            <input type="text" class="search-input" placeholder="Search or enter web address">
+    <h1>Live Code Editor with HTML, CSS, and JavaScript</h1>
+    <div class="container">
+        <!-- HTML Editor -->
+        <div class="editor-container">
+            <div class="editor-title">HTML</div>
+            <div id="htmlEditor" class="editor"></div>
         </div>
-
-        <!-- Right-side icons -->
-        <div class="right-icons">
-            <!-- Icons: Replace with your own images or icons -->
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/refresh.png" alt="Refresh">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/star.png" alt="Favorite">
-            <!-- Three dots menu icon -->
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/menu.png" class="menu-icon" alt="Menu">
+        <!-- CSS Editor -->
+        <div class="editor-container">
+            <div class="editor-title">CSS</div>
+            <div id="cssEditor" class="editor"></div>
         </div>
+        <!-- JavaScript Editor -->
+        <div class="editor-container">
+            <div class="editor-title">JavaScript</div>
+            <div id="jsEditor" class="editor"></div>
+        </div>
+        <!-- Live Preview -->
+        <iframe id="preview"></iframe>
     </div>
+
+    <script>
+        // Initialize Ace editors for HTML, CSS, and JavaScript
+        const htmlEditor = ace.edit("htmlEditor");
+        htmlEditor.setTheme("ace/theme/monokai");
+        htmlEditor.session.setMode("ace/mode/html");
+        htmlEditor.session.setValue(`<!DOCTYPE html>
+<html>
+<body>
+  <h2>Hello World</h2>
+  <p>This is a simple HTML code editor.</p>
+</body>
+</html>`);
+
+        const cssEditor = ace.edit("cssEditor");
+        cssEditor.setTheme("ace/theme/monokai");
+        cssEditor.session.setMode("ace/mode/css");
+        cssEditor.session.setValue(`body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}`);
+
+        const jsEditor = ace.edit("jsEditor");
+        jsEditor.setTheme("ace/theme/monokai");
+        jsEditor.session.setMode("ace/mode/javascript");
+        jsEditor.session.setValue(`console.log('Hello World');`);
+
+        // Function to update the iframe preview
+        function updatePreview() {
+            const htmlContent = htmlEditor.getValue();
+            const cssContent = "<style>" + cssEditor.getValue() + "</style>";
+            const jsContent = "<script>" + jsEditor.getValue() + "</" + "script>";
+            
+            const iframe = document.getElementById("preview").contentWindow.document;
+            iframe.open();
+            iframe.write(htmlContent + cssContent + jsContent);
+            iframe.close();
+        }
+
+        // Attach the update function to the 'change' event for each editor
+        htmlEditor.session.on('change', updatePreview);
+        cssEditor.session.on('change', updatePreview);
+        jsEditor.session.on('change', updatePreview);
+
+        // Initial preview load
+        updatePreview();
+    </script>
 </body>
 </html>
