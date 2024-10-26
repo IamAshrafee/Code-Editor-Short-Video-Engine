@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="ace/src/ace.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js" integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -11,10 +13,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Code Editor Short Video Engine</title>
+    <title>Coding Short Video Engine</title>
   </head>
-
   <body>
+    <!-- thi is a without backend web application, I give it a name "Coding Short Video Engine". In this project I used HTML, CSS and JavaScript. The web application will be used for making coding short videos. 
+     It will help you to make coding short videos. Because it has already a short video frame and screen recording that will record the short video frame easily. -->
+
+    <!-- এই বাম সেকশন এ একটি টেক্সট এরিয়া বাক্স আছে যেখানে টেক্সট লেখা যাবে। তার নিচে একটি ইনপুট নম্বর আছে, "Typing Speed " নামে, এর কাজ হচ্ছে এখানে যত নম্বর দেয়া থাকবে ওতো স্পীডে টাইপ করতে হবে। তার নিচে ৩টি বাটন আছে, যেগুলো হলো: "Start টাইপিং, স্টপ টাইপিং, End টাইপিং", এই বাটন গুলোর কাজ হলো,  "Start টাইপিং" এ ক্লিক করলে টাইপিং করা স্টার্ট করবে। এই পুরো জিনিষটির কাজ হলো যখন কেউ, ওই টেক্সট বাক্স এ কিছু লিখবে এবং "স্টার্ট টাইপিং " এ ক্লিক করবে এবং তারপর তার কার্সর টি যেখানে থাকবে বা টেক্সট লিখার জন্য সিলেক্ট করা হবে সেখানে যতটুকু টাইপিং স্পিড দেয়া থাকবে অতটুকু স্পিড এ অটোমেটিক ইনপুট করা টেক্সট গুলো এক অক্ষর এক অক্ষর করে লিখতে থাকবে।  -->
     <div class="left-container">
       <div class="container">
         <div class="type-box-container">
@@ -32,16 +37,25 @@
             ></textarea>
           </div>
         </div>
-        <div class="buttons-box-container">
-          <div class="typing-speed-button">
-            <button>Typing Speed</button>
-            <input type="number" />
-          </div>
+        <div class="typing-speed-button">
+          <!-- By default it value will be 1, that is normal typing speed.
+           এবং এর পর যত নুম্বর বাড়ানো হবে অতো টুকু স্পিড এ Typing হবে।-->
+          <span>Typing Speed</span>
+          <input type="number" />
+        </div>
+        <div class="start-typing-button">
+          <!-- When someone will click it, it will be start typing -->
+          <button>Start Typing</button>
+          <!-- When someone will click it, it will be stop typing -->
+          <button>Stop Typing</button>
+          <!-- When someone will click it, it will be end typing -->
+          <button>End Typing</button>
         </div>
       </div>
     </div>
     <div class="middle-container">
       <div class="middle-box-container">
+        <!-- এই Author bar section এর কোন কাজ নেই, এটি শুধু দেখতে শুন্দর করার জন্য রাখার হয়েছে -->
         <div class="authorbar-section">
           <div class="reload-icon display-alighn-center">
             <img src="./images/icons8-reload-96.png" alt="" />
@@ -64,17 +78,57 @@
             <img src="./images/icons8-youtube-100.png" alt="youtube icon" />
           </div>
         </div>
+        <!-- এটি হচ্ছে আউটপুট সেকশন, এর কাজ হচ্ছে, নিচে থাকা কোড এডিটর এ যখন "HTML , CSS , Javascript " ল্যাঙ্গুয়েজে এ কোড গুলো লিখা হবে, তার আউটপুট গুলো এখানে দেখাবে। -->
         <div class="output-secion">
           <div class="output-box">
             <div class="output-inner-box">
               <div class="caption"></div>
+
             </div>
           </div>
+        </div>
+        <div class="language-tab-select-section">
+          <div class="html-language-tab selected-tab">
+            <img src="./images/icons8-html-48.png" alt="" />
+            <button>HTML</button>
+          </div>
+          <div class="css-language-tab">
+            <img src="./images/icons8-css-48.png" alt="" />
+            <button>CSS</button>
+          </div>
+          <div class="javascript-language-tab">
+            <img src="./images/icons8-javascript-48.png" alt="" />
+            <button>JavaScript</button>
+          </div>
+        </div>
+        <div class="code-editor-section">
+          <div id="editor">/* Start typing your code here */</div>
         </div>
       </div>
     </div>
     <div class="right-container">
-      <div class="container"></div>
+      <div class="right-box-container">
+        <div class="caption-box">
+          <input type="text" />
+          <button>Push the caption</button>
+        </div>
+      </div>
     </div>
+    <script>
+      // Initialize Ace Editor
+      const editor = ace.edit("editor");  // Create an editor in the 'editor' div
+      editor.setTheme("ace/theme/cloud9_night");  // Set the theme (You can change to your preference)
+      editor.session.setMode("ace/mode/javascript");  // Set the language mode to JavaScript
+
+      // Additional Settings (Optional)
+      editor.setOptions({
+          fontSize: "16px",        // Set font size
+          showLineNumbers: true,   // Show line numbers
+          tabSize: 4,              // Set tab size
+          wrap: true               // Wrap long lines
+      });
+  </script>
+    <script src="./script/script.js"></script>
   </body>
 </html>
+

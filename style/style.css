@@ -44,7 +44,6 @@ body {
 .right-container {
     height: 800px;
     width: 450px;
-    border: 1px solid wheat;
 }
 
 
@@ -113,12 +112,12 @@ body {
     font-weight: 300;
 }
 
-.type-box textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar {
     width: 13px;
     background-color: #29292957;
 }
 
-.type-box textarea::-webkit-scrollbar-thumb {
+textarea::-webkit-scrollbar-thumb {
     background-color: #171717c5;
     cursor: pointer;
 
@@ -136,17 +135,17 @@ body {
 /* type box container End here */
 
 /* Buttons box container CSS */
-.buttons-box-container {}
-
 .typing-speed-button {
     background-color: #292929;
     border-radius: 10px;
     width: max-content;
     height: max-content;
     padding: 6px 10px 6px 5px;
+    margin: 0px 0px 20px 0px;
+
 }
 
-.typing-speed-button button {
+.typing-speed-button span {
     border: none;
     font-size: 16px;
     font-family: var(--font-family);
@@ -154,7 +153,7 @@ body {
     background-color: transparent;
     margin: 0px 8px;
     color: rgba(255, 255, 255, 0.815);
-   
+
 }
 
 .typing-speed-button input {
@@ -183,6 +182,32 @@ body {
     margin: 0;
 }
 
+.start-typing-button {
+    height: max-content;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.start-typing-button button {
+    padding: 12px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    background-color: #292929;
+    color: rgba(255, 255, 255, 0.815);
+    cursor: pointer;
+    border: none;
+}
+
+.start-typing-button button:hover {
+    background-color: #292929c4;
+}
+
+
+
 /* Buttons box container End here */
 
 /* Middle box container CSS */
@@ -190,17 +215,18 @@ body {
 .middle-box-container {
     width: 100%;
     height: 100%;
-    padding: 15px;
+    padding: 10px;
 }
 
 /* authorbar section started here  */
 
 .authorbar-section {
-    background-color: #292929;
+    background-color: #292929 !important;
+    background-color: #9f9f9f;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 46px;
+    height: 44px;
     width: 100%;
     justify-content: space-around;
 }
@@ -211,7 +237,7 @@ body {
 
 .reload-icon img {
     width: auto;
-    height: 31px;
+    height: 26px;
 }
 
 .authorbar {
@@ -229,7 +255,7 @@ body {
 
 .world-icon img {
     width: auto;
-    height: 23px;
+    height: 20px;
 }
 
 .author-text {}
@@ -245,7 +271,7 @@ body {
 
 .star-icon img {
     width: auto;
-    height: 21px;
+    height: 18px;
 }
 
 .star-icon {}
@@ -254,14 +280,14 @@ body {
 
 .three-dot-icon img {
     width: auto;
-    height: 22px;
+    height: 20px;
 }
 
 .youtube-icon {}
 
 .youtube-icon img {
     width: auto;
-    height: 35px;
+    height: 30px;
 }
 
 /* Output box started here */
@@ -283,6 +309,198 @@ body {
     background-color: #171717;
 }
 
-.caption {
+.caption {}
+
+.language-tab-select-section {
+    width: 100%;
+    height: 30px;
+    background-color: #292929;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.html-language-tab {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: max-content;
+    background-color: #171717;
+    margin-left: 5px;
+    padding: 0px 15px;
+    cursor: pointer;
+}
+
+.html-language-tab img {
+    width: auto;
+    height: 18px;
 
 }
+
+.html-language-tab button {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: 0px 5px;
+    cursor: pointer;
+
+}
+
+.css-language-tab {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: max-content;
+    background-color: #171717;
+    margin-left: 5px;
+    padding: 0px 15px;
+    cursor: pointer;
+
+}
+
+.css-language-tab img {
+    width: auto;
+    height: 18px;
+
+}
+
+.css-language-tab button {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.javascript-language-tab {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: max-content;
+    background-color: #171717;
+    margin-left: 5px;
+    padding: 0px 15px;
+    cursor: pointer;
+}
+
+.javascript-language-tab img {
+    width: auto;
+    height: 18px;
+
+}
+
+.javascript-language-tab button {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: 0px 5px;
+    cursor: pointer;
+
+}
+
+.selected-tab {
+    border-radius: 10px 10px 0px 0px;
+}
+
+/* Code editor box CSS start here  */
+
+#editor {
+    width: 100%;
+    height: 500px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* Right container started here */
+
+.right-box-container {}
+
+.caption-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+}
+
+.caption-box input {
+    height: 40px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: start;
+    border-radius: 10px;
+    width: 100%;
+    padding: 0px 10px;
+    border: 0.5px solid white;
+    margin: 0px 0px 15px;
+}
+
+.caption-box input:focus {
+    outline: none;
+}
+
+.caption-box button {
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    background-color: #292929;
+    color: rgba(255, 255, 255, 0.815);
+    cursor: pointer;
+    border: none;
+    width: 165px;
+}
+
+.caption-box button:hover {
+    background-color: #292929c4;
+}
+
+/* Code editor CSS  */
+
+.ace_tag-open,
+.ace_tag-close,
+.ace_end-tag-open,
+.ace_keyword,
+.ace_operator,
+.ace_attribute-equals {
+    color: #ff4921 !important;
+}
+
+.ace_tag-name , .ace_keyword{
+    color: #f1a791 !important;
+}
+
+.ace_entity,
+.ace_other,
+.ace_attribute-name {
+    color: #e8da03 !important;
+}
+
+.ace_string,
+.ace_attribute-value {
+    color: #5addb7 !important;
+    ;
+}
+
+.ace_constant{
+    color: #3eb7ee !important;
+}
+
+.ace_variable{
+    color: #ff6431 !important;
+}
+
+/* Editor Css end here  */
+
