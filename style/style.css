@@ -311,6 +311,14 @@ textarea::-webkit-scrollbar-thumb {
 
 .caption {}
 
+#output{
+    width: 100%;
+    height: 100%;
+    background-color: ;
+    border: none;
+    outline: none;
+}
+
 .language-tab-select-section {
     width: 100%;
     height: 30px;
@@ -478,7 +486,8 @@ textarea::-webkit-scrollbar-thumb {
     color: #ff4921 !important;
 }
 
-.ace_tag-name , .ace_keyword{
+.ace_tag-name,
+.ace_keyword {
     color: #f1a791 !important;
 }
 
@@ -494,13 +503,67 @@ textarea::-webkit-scrollbar-thumb {
     ;
 }
 
-.ace_constant{
+.ace_constant {
     color: #3eb7ee !important;
 }
 
-.ace_variable{
+.ace_variable {
     color: #ff6431 !important;
 }
 
 /* Editor Css end here  */
 
+.recording-time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 100%;
+    height: 40px;
+}
+
+.recording-time p {
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.815);
+}
+
+.recording-time img {
+    width: auto;
+    height: 36px;
+}
+
+.recording-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 40px;
+}
+
+.recording-buttons button {
+    background-color: #292929;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.815);
+    cursor: pointer;
+    margin-top: 15px;
+
+}
+
+.recording-buttons button:hover {
+    background-color: #292929c4;
+}

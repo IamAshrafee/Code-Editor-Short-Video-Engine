@@ -1,119 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/style.css" />
-    <script src="ace/src/ace.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js" integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Coding Short Video Engine</title>
-  </head>
-  <body>
-    <!-- thi is a without backend web application, I give it a name "Coding Short Video Engine". In this project I used HTML, CSS and JavaScript. The web application will be used for making coding short videos. 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/style.css" />
+  <script src="ace/src/ace.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js" integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Coding Short Video Engine</title>
+</head>
+
+<body>
+  <!-- thi is a without backend web application, I give it a name "Coding Short Video Engine". In this project I used HTML, CSS and JavaScript. The web application will be used for making coding short videos. 
      It will help you to make coding short videos. Because it has already a short video frame and screen recording that will record the short video frame easily. -->
 
-    <!-- এই বাম সেকশন এ একটি টেক্সট এরিয়া বাক্স আছে যেখানে টেক্সট লেখা যাবে। তার নিচে একটি ইনপুট নম্বর আছে, "Typing Speed " নামে, এর কাজ হচ্ছে এখানে যত নম্বর দেয়া থাকবে ওতো স্পীডে টাইপ করতে হবে। তার নিচে ৩টি বাটন আছে, যেগুলো হলো: "Start টাইপিং, স্টপ টাইপিং, End টাইপিং", এই বাটন গুলোর কাজ হলো,  "Start টাইপিং" এ ক্লিক করলে টাইপিং করা স্টার্ট করবে। এই পুরো জিনিষটির কাজ হলো যখন কেউ, ওই টেক্সট বাক্স এ কিছু লিখবে এবং "স্টার্ট টাইপিং " এ ক্লিক করবে এবং তারপর তার কার্সর টি যেখানে থাকবে বা টেক্সট লিখার জন্য সিলেক্ট করা হবে সেখানে যতটুকু টাইপিং স্পিড দেয়া থাকবে অতটুকু স্পিড এ অটোমেটিক ইনপুট করা টেক্সট গুলো এক অক্ষর এক অক্ষর করে লিখতে থাকবে।  -->
-    <div class="left-container">
-      <div class="container">
-        <div class="type-box-container">
-          <div class="type-box-header">
-            <div class="type-box-header-container">
-              <i class="fa-solid fa-pen-to-square type-box-icon"></i>
-              <p>Text Here</p>
-            </div>
-          </div>
-          <div class="type-box">
-            <textarea
-              name=""
-              id=""
-              placeholder="Type or Paste Your Text Here...."
-            ></textarea>
+  <!-- এই বাম সেকশন এ একটি টেক্সট এরিয়া বাক্স আছে যেখানে টেক্সট লেখা যাবে। তার নিচে একটি ইনপুট নম্বর আছে, "Typing Speed " নামে, এর কাজ হচ্ছে এখানে যত নম্বর দেয়া থাকবে ওতো স্পীডে টাইপ করতে হবে। তার নিচে ৩টি বাটন আছে, যেগুলো হলো: "Start টাইপিং, স্টপ টাইপিং, End টাইপিং", এই বাটন গুলোর কাজ হলো,  "Start টাইপিং" এ ক্লিক করলে টাইপিং করা স্টার্ট করবে। এই পুরো জিনিষটির কাজ হলো যখন কেউ, ওই টেক্সট বাক্স এ কিছু লিখবে এবং "স্টার্ট টাইপিং " এ ক্লিক করবে এবং তারপর তার কার্সর টি যেখানে থাকবে বা টেক্সট লিখার জন্য সিলেক্ট করা হবে সেখানে যতটুকু টাইপিং স্পিড দেয়া থাকবে অতটুকু স্পিড এ অটোমেটিক ইনপুট করা টেক্সট গুলো এক অক্ষর এক অক্ষর করে লিখতে থাকবে।  -->
+  <div class="left-container">
+    <div class="container">
+      <div class="type-box-container">
+        <div class="type-box-header">
+          <div class="type-box-header-container">
+            <i class="fa-solid fa-pen-to-square type-box-icon"></i>
+            <p>Text Here</p>
           </div>
         </div>
-        <div class="typing-speed-button">
-          <!-- By default it value will be 1, that is normal typing speed.
+        <div class="type-box">
+          <textarea name="" id="" placeholder="Type or Paste Your Text Here...."></textarea>
+        </div>
+      </div>
+      <div class="typing-speed-button">
+        <!-- By default it value will be 1, that is normal typing speed.
            এবং এর পর যত নুম্বর বাড়ানো হবে অতো টুকু স্পিড এ Typing হবে।-->
-          <span>Typing Speed</span>
-          <input type="number" />
-        </div>
-        <div class="start-typing-button">
-          <!-- When someone will click it, it will be start typing -->
-          <button>Start Typing</button>
-          <!-- When someone will click it, it will be stop typing -->
-          <button>Stop Typing</button>
-          <!-- When someone will click it, it will be end typing -->
-          <button>End Typing</button>
-        </div>
+        <span>Typing Speed</span>
+        <input type="number" />
+      </div>
+      <div class="start-typing-button">
+        <!-- When someone will click it, it will be start typing -->
+        <button>Start Typing</button>
+        <!-- When someone will click it, it will be stop typing -->
+        <button>Stop Typing</button>
+        <!-- When someone will click it, it will be end typing -->
+        <button>End Typing</button>
       </div>
     </div>
-    <div class="middle-container">
-      <div class="middle-box-container">
-        <!-- এই Author bar section এর কোন কাজ নেই, এটি শুধু দেখতে শুন্দর করার জন্য রাখার হয়েছে -->
-        <div class="authorbar-section">
-          <div class="reload-icon display-alighn-center">
-            <img src="./images/icons8-reload-96.png" alt="" />
+  </div>
+  <div class="middle-container">
+    <div class="middle-box-container">
+      <!-- এই Author bar section এর কোন কাজ নেই, এটি শুধু দেখতে শুন্দর করার জন্য রাখার হয়েছে -->
+      <div class="authorbar-section">
+        <div class="reload-icon display-alighn-center">
+          <img src="./images/icons8-reload-96.png" alt="" />
+        </div>
+        <div class="authorbar display-alighn-center">
+          <div class="world-icon display-alighn-center">
+            <img src="./images/icons8-world-100 (1).png" alt="" />
           </div>
-          <div class="authorbar display-alighn-center">
-            <div class="world-icon display-alighn-center">
-              <img src="./images/icons8-world-100 (1).png" alt="" />
-            </div>
-            <div class="author-text display-alighn-center">
-              <p>Ashrafee Techiest</p>
-            </div>
-            <div class="star-icon display-alighn-center">
-              <img src="./images/icons8-star-100.png" alt="start icon" />
-            </div>
+          <div class="author-text display-alighn-center">
+            <p>Ashrafee Techiest</p>
           </div>
-          <div class="three-dot-icon display-alighn-center">
-            <img src="./images/icons8-ellipsis-30.png" alt="three dot icon" />
-          </div>
-          <div class="youtube-icon display-alighn-center">
-            <img src="./images/icons8-youtube-100.png" alt="youtube icon" />
+          <div class="star-icon display-alighn-center">
+            <img src="./images/icons8-star-100.png" alt="start icon" />
           </div>
         </div>
-        <!-- এটি হচ্ছে আউটপুট সেকশন, এর কাজ হচ্ছে, নিচে থাকা কোড এডিটর এ যখন "HTML , CSS , Javascript " ল্যাঙ্গুয়েজে এ কোড গুলো লিখা হবে, তার আউটপুট গুলো এখানে দেখাবে। -->
-        <div class="output-secion">
-          <div class="output-box">
-            <div class="output-inner-box">
-              <div class="caption"></div>
+        <div class="three-dot-icon display-alighn-center">
+          <img src="./images/icons8-ellipsis-30.png" alt="three dot icon" />
+        </div>
+        <div class="youtube-icon display-alighn-center">
+          <img src="./images/icons8-youtube-100.png" alt="youtube icon" />
+        </div>
+      </div>
+      <!-- এটি হচ্ছে আউটপুট সেকশন, এর কাজ হচ্ছে, নিচে থাকা কোড এডিটর এ যখন "HTML , CSS , Javascript " ল্যাঙ্গুয়েজে এ কোড গুলো লিখা হবে, তার আউটপুট গুলো এখানে দেখাবে। -->
+      <div class="output-secion">
+        <div class="output-box">
+          <div class="output-inner-box">
+            <div class="caption"></div>
+            <iframe id="output"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="language-tab-select-section">
+        <div class="html-language-tab selected-tab">
+          <img src="./images/icons8-html-48.png" alt="" />
+          <button>HTML</button>
+        </div>
+        <div class="css-language-tab">
+          <img src="./images/icons8-css-48.png" alt="" />
+          <button>CSS</button>
+        </div>
+        <div class="javascript-language-tab">
+          <img src="./images/icons8-javascript-48.png" alt="" />
+          <button>JavaScript</button>
+        </div>
+      </div>
+      <div class="code-editor-section">
+        <div id="editor">/* Start typing your code here */</div>
+      </div>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="right-box-container">
+      <div class="caption-box">
+        <input type="text" />
+        <button>Push the caption</button>
+      </div>
+      <div class="recording-time">
+        <p>Recording Time :</p>
+        <img src="./images/icons8-recording-48.png" alt="">
+        <p>00:00:00</p>
+      </div>
+      <div class="recording-buttons">
+        <button>Start Recording</button>
+        <button>End Recording</button>
+        <button>Pause/Resume</button>
 
-            </div>
-          </div>
-        </div>
-        <div class="language-tab-select-section">
-          <div class="html-language-tab selected-tab">
-            <img src="./images/icons8-html-48.png" alt="" />
-            <button>HTML</button>
-          </div>
-          <div class="css-language-tab">
-            <img src="./images/icons8-css-48.png" alt="" />
-            <button>CSS</button>
-          </div>
-          <div class="javascript-language-tab">
-            <img src="./images/icons8-javascript-48.png" alt="" />
-            <button>JavaScript</button>
-          </div>
-        </div>
-        <div class="code-editor-section">
-          <div id="editor">/* Start typing your code here */</div>
-        </div>
       </div>
     </div>
-    <div class="right-container">
-      <div class="right-box-container">
-        <div class="caption-box">
-          <input type="text" />
-          <button>Push the caption</button>
-        </div>
-      </div>
-    </div>
+
+
     <script>
       // Initialize Ace Editor
       const editor = ace.edit("editor");  // Create an editor in the 'editor' div
@@ -122,13 +128,13 @@
 
       // Additional Settings (Optional)
       editor.setOptions({
-          fontSize: "16px",        // Set font size
-          showLineNumbers: true,   // Show line numbers
-          tabSize: 4,              // Set tab size
-          wrap: true               // Wrap long lines
+        fontSize: "16px",        // Set font size
+        showLineNumbers: true,   // Show line numbers
+        tabSize: 4,              // Set tab size
+        wrap: true               // Wrap long lines
       });
-  </script>
+    </script>
     <script src="./script/script.js"></script>
-  </body>
-</html>
+</body>
 
+</html>
