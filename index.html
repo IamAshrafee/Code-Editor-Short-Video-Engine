@@ -11,14 +11,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Coding Short Video Engine</title>
 </head>
-
 <body>
-  <!-- thi is a without backend web application, I give it a name "Coding Short Video Engine". In this project I used HTML, CSS and JavaScript. The web application will be used for making coding short videos. 
-     It will help you to make coding short videos. Because it has already a short video frame and screen recording that will record the short video frame easily. -->
-
-  <!-- এই বাম সেকশন এ একটি টেক্সট এরিয়া বাক্স আছে যেখানে টেক্সট লেখা যাবে। তার নিচে একটি ইনপুট নম্বর আছে, "Typing Speed " নামে, এর কাজ হচ্ছে এখানে যত নম্বর দেয়া থাকবে ওতো স্পীডে টাইপ করতে হবে। তার নিচে ৩টি বাটন আছে, যেগুলো হলো: "Start টাইপিং, স্টপ টাইপিং, End টাইপিং", এই বাটন গুলোর কাজ হলো,  "Start টাইপিং" এ ক্লিক করলে টাইপিং করা স্টার্ট করবে। এই পুরো জিনিষটির কাজ হলো যখন কেউ, ওই টেক্সট বাক্স এ কিছু লিখবে এবং "স্টার্ট টাইপিং " এ ক্লিক করবে এবং তারপর তার কার্সর টি যেখানে থাকবে বা টেক্সট লিখার জন্য সিলেক্ট করা হবে সেখানে যতটুকু টাইপিং স্পিড দেয়া থাকবে অতটুকু স্পিড এ অটোমেটিক ইনপুট করা টেক্সট গুলো এক অক্ষর এক অক্ষর করে লিখতে থাকবে।  -->
-
-  <!-- আমি এই ওয়েব অ্যাপ্লিকেশান টির মাধ্যমে রীলস বানাব, ভিডিও গুলো রেকর্ড করার পর এডিট করে তারপর upload করবো এটি আমার রেকর্ডিং এর কাজটি অনেক সহজ করে দিবে।  -->
   <div class="left-container">
     <div class="container">
       <div class="type-box-container">
@@ -30,22 +23,22 @@
         </div>
         <!-- This is the text input box where will be the text to be typed or pasted -->
         <div class="type-box">
-          <textarea name="" id="" placeholder="Type or Paste Your Text Here...."></textarea>
+          <textarea id="textInput" placeholder="Type or Paste Your Text Here...."></textarea>
         </div>
       </div>
       <div class="typing-speed-button">
         <!-- By default it value will be 1, that is normal typing speed.
            এবং এর পর যত নুম্বর বাড়ানো হবে অতো টুকু স্পিড এ Typing হবে।-->
         <span>Typing Speed</span>
-        <input type="number" />
+        <input type="number" id="speedControl" min="1" max="10" value="1" />
       </div>
       <div class="start-typing-button">
         <!-- When someone will click it, it will be start typing -->
-        <button>Start Typing</button>
+        <button onclick="enableTyping()">Start Typing</button>
         <!-- When someone will click it, it will be stop typing -->
-        <button>Stop Typing</button>
+        <button id="pauseResumeButton" onclick="togglePauseResume()">Pause Typing</button>
         <!-- When someone will click it, it will be end typing -->
-        <button>End Typing</button>
+        <button id="endButton" onclick="endTyping()">End Typing</button>
       </div>
       <!-- this is a section where will be show all the logs of the entire web application, like it will tell recording started, waiting for typing, started typing with 1 speed and so on.
        means it's the logs showing section -->
@@ -56,7 +49,7 @@
           </div>
         </div>
         <div class="logger-showing-box">
-          <textarea name="" id="" placeholder="Logger status here...."></textarea>
+          <textarea name="" id="logger" placeholder="Logger status here...."></textarea>
         </div>
       </div>
     </div>
@@ -97,7 +90,7 @@
           </div>
         </div>
       </div>
-      <!-- এটি হচ্ছে Language selection tab section, এখানে ৩টি ল্যাঙ্গুয়েজ এর ট্যাব আছে, যখন যেই ল্যাঙ্গুয়েজ এ লিখব তখন সেটি সিলেক্ট করে নিব। ধরুন আপনি প্রথমে HTML ল্যাঙ্গুয়েজ এ কিছু কোড করলেন, এখন আপনাকে CSS লিখতে হবে, তখন CSS ল্যাঙ্গুয়েজে সিলেক্ট করবেন, তখন নতুন একটি ট্যাব আসবে যেখানে আপনি আপনার CSS কোড গুলো লিখতে পারবেন। এভাবে Javascript এর ক্ষেত্রেও। আর এই কোড গুলো লিখা কালিন প্রতিটা word or letter এর সাথে সাথে তার অউটপুট উপরে Output Box এ load নিবে অর্থাৎ দেখাবে। মনে রাখবে, এই ৩টি লাঙ্গুগাজে এর লিঙ্কআপ কিন্তু আগে থেকেই করা লাগবে, অর্থাৎ HTML লিখা কালিন আপনাকে CSS link করে নিতে হবে না। -->
+      
       <div class="language-tab-select-section">
         <!-- By default HTML language tab will be selected -->
         <!-- another thing, যখন যেই ট্যাব টি সিলেক্ট হবে তখন তাকে "selected-tab" এই ক্লাস টি দিতে হবে, এর দ্বারা একটি Border radius চলে আসবে Selected tab টিতে  -->
@@ -127,8 +120,6 @@
     </div>
   </div>
   <!-- This is the right container of the web page that will be shown on the right side of the web page. -->
-  <!-- এই section এ দুটি পার্ট আছে, প্রথমটি হচ্ছে caption box, যেখানে একটি টেক্সট ইনপুট অপশন আছে এবং একটি বাটন আছে "Push the caption" নামে, যখন ওই টেক্সট ইনপুট এ কিছু লেখা হবে এবং বাটন টিতে ক্লিক করা হবে, তখন সেই লেখাটি ওই অউটপুট বক্সে থাকা Caption এর জায়গায় দেখাবে। দ্বিতীয় টি হচ্ছে খুবই গুরুত্বপূর্ণ। দ্বিতীয় টি হচ্ছে recording section, এখানে শুরুতে একটি টাইমার আছে, যেখানে দেখাবে Recording টির Duration কত হচ্ছে, অর্থাৎ কত সেকেন্ড রেকর্ড হয়েছে। এর নিছে কিছু বাটন রয়েছে, প্রথমটি হচ্ছে "Start Recording" যখন এই বাটন টিতে ক্লিক করা হবে তখন "middle-box-container" যেটি আছে তার Full height width মানে ওই পুরো container টি screen recording করা শুরু হবে, মানে ওই "middle-box-container" এর মধ্যে তখন যা যা ঘটতে থাকবে সব রেকর্ড হবে এমনকি তার উপর মাউস কার্সর টি গেলেও সেটিও রেকর্ড হবে এবং যেই রেকর্ডিং টি হবে সেটির Height width ওই "middle-box-container" এর height width এর সমান সমান হবে অর্থাৎ 1080x1920। 
-    এর পরের বাটনটি হচ্ছে "End Recording" যখন এই বাটন টিতে ক্লিক করা হবে তখন চালু থাকা রেকর্ডিং টি শেষ হবে এবং শেষ হওয়ার সাথে সাথে রেকর্ডিং হওয়া ভিডিও টি সাথে সাথে ডাউনলোড অর্থাৎ কম্পিউটার এ সেভ হয়ে যাবে । আর শেষ তারপরের বাটন টি হচ্ছে, "Pause/Resume" যখন এই বাটন টিতে ক্লিক করা হবে তখন চালু রেকর্ডিং টি Pause হয়ে যাবে, আর আবার ক্লিক করলে চালু থাকা রেকর্ডিং টি Resume হয়ে যাবে। -->
   <div class="right-container">
     <div class="right-box-container">
       <div class="caption-box">

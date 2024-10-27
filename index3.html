@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ace/src/ace.js"></script>
+    <title>Auto Typer</title>
+    <style>
+        /* Your CSS styling remains the same */
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        #container {
+            text-align: center;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        button, input[type="number"] {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button#endButton {
+            background-color: #dc3545;
+        }
+        label, span {
+            font-size: 14px;
+        }
+        #editor {
+    width: 101.5%;
+    height:485px;
+    border-radius: 0px 10px 10px 10px;
+}
+    </style>
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h2>Auto Typer</h2>
+    <textarea id="textInput" placeholder="Enter text here..."></textarea>
+    <button onclick="enableTyping()">Start Typing</button>
+    <button id="pauseResumeButton" onclick="togglePauseResume()">Pause Typing</button>
+    <button id="endButton" onclick="endTyping()">End Typing</button>
+    <div>
+        <span>Typing Speed</span>
+        <input type="number" id="speedControl" min="1" max="10" value="1">
+    </div>
+    <div id="editor"></div>
+</div>
+
+   <script>
+    let typingInterval;
+    let typingActive = false;
+    let inputText = "";
+    let speedMultiplier = 1;
+    let currentIndex = 0;
+    let isPaused = false;
+    let targetEditor = null;  // Track the editor instance
+
+    // Function to enable typing mode
+    function enableTyping() {
+        inputText = document.getElementById("textInput").value;
+        typingActive = true;
+        speedMultiplier = document.getElementById("speedControl").value;
+        console.log("Click inside the text field where you want to start typing.");
+    }
+
+    // Event listener to detect clicks in the editor and start typing if typing is enabled
+    document.getElementById("editor").addEventListener("click", (event) => {
+        if (typingActive) {
+            targetEditor = editor;  // Set target to Ace editor
+            startTyping();
+            typingActive = false; // Disable typing mode after starting
+        } else if (isPaused && targetEditor) {
+            resumeTyping();
+        }
+    });
+
+    // Function to start typing the input text into the Ace Editor
+    function startTyping() {
+        const speed = 200 / speedMultiplier; // Adjust speed based on the multiplier
+        typingInterval = setInterval(() => {
+            if (currentIndex >= inputText.length) {
+                clearInterval(typingInterval);
+            } else {
+                // Insert text at the current cursor position in the editor
+                targetEditor.session.insert(targetEditor.getCursorPosition(), inputText.charAt(currentIndex));
+                currentIndex++;
+            }
+        }, speed);
+    }
+
+    // Function to toggle between pause and resume typing
+    function togglePauseResume() {
+        if (!isPaused) {
+            // Pause typing
+            clearInterval(typingInterval);
+            document.getElementById("pauseResumeButton").innerText = "Resume Typing";
+            isPaused = true;
+        } else if (targetEditor) {
+            // Resume typing
+            resumeTyping();
+        }
+    }
+
+    // Function to resume typing from the last position
+    function resumeTyping() {
+        const speed = 200 / speedMultiplier;
+        typingInterval = setInterval(() => {
+            if (currentIndex >= inputText.length) {
+                clearInterval(typingInterval);
+            } else {
+                targetEditor.session.insert(targetEditor.getCursorPosition(), inputText.charAt(currentIndex));
+                currentIndex++;
+            }
+        }, speed);
+        isPaused = false;
+        document.getElementById("pauseResumeButton").innerText = "Pause Typing";
+    }
+
+    // Function to fully abort the typing process
+    function endTyping() {
+        clearInterval(typingInterval);
+        typingActive = false;
+        currentIndex = 0; // Reset the current index for a fresh start
+        isPaused = false; // Reset pause status
+        targetEditor = null; // Clear the target editor
+        document.getElementById("pauseResumeButton").innerText = "Pause Typing"; // Reset button text
+    }
+
+    // Event listener for speed control input
+    document.getElementById("speedControl").addEventListener("input", (event) => {
+        speedMultiplier = event.target.value;
+    });
+
+    // Initialize Ace editor
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/cloud9_night");  // Set editor theme
+    editor.session.setMode("ace/mode/javascript");  // Optional: set mode to JavaScript
+
+    // Additional Settings (Optional)
+    editor.setOptions({
+        enableBasicAutocompletion: false,    // Turns off basic autocompletion
+        enableLiveAutocompletion: false,     // Turns off live autocompletion
+        enableSnippets: false,               // Turns off code snippets
+        behavioursEnabled: false,            // Disables auto-closing tags and brackets
+        fontSize: "14px",
+        showLineNumbers: true,
+        tabSize: 4,
+        wrap: true,
+        useSoftTabs: false,                  // Turns off soft tabs (auto indentation)
+        autoIndent: false                    // Disables automatic indentation for new lines
+    });
+</script>
+
+</body>
+</html>
