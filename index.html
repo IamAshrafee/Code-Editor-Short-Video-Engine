@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <!-- Sets the character encoding for the document -->
   <meta charset="UTF-8" />
+  
+  <!-- Configures the page to scale on different device widths -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Links to external CSS file for styling -->
   <link rel="stylesheet" href="./style/style.css" />
+
+  <!-- Links to Ace Editor for embedding a code editor -->
   <script src="ace/src/ace.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+
+  <!-- Links to Font Awesome icons for icons used in the app -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Sets the title for the webpage -->
   <title>Coding Short Video Engine</title>
 </head>
 <body>
+  <!-- Left side container for text input, speed control, and logs -->
   <div class="left-container">
     <div class="container">
+      
+      <!-- Section for inputting text to be typed or pasted -->
       <div class="type-box-container">
         <div class="type-box-header">
           <div class="type-box-header-container">
@@ -21,42 +34,45 @@
             <p>Text Here</p>
           </div>
         </div>
-        <!-- This is the text input box where will be the text to be typed or pasted -->
+        
+        <!-- Text input area where users can type or paste content -->
         <div class="type-box">
           <textarea id="textInput" placeholder="Type or Paste Your Text Here...."></textarea>
         </div>
       </div>
+      
+      <!-- Typing speed control section with input field for speed (1-10) -->
       <div class="typing-speed-button">
-        <!-- By default it value will be 1, that is normal typing speed.
-           এবং এর পর যত নুম্বর বাড়ানো হবে অতো টুকু স্পিড এ Typing হবে।-->
         <span>Typing Speed</span>
         <input type="number" id="speedControl" min="1" max="10" value="1" />
       </div>
+      
+      <!-- Buttons for controlling typing: start, pause/resume, and end -->
       <div class="start-typing-button">
-        <!-- When someone will click it, it will be start typing -->
         <button onclick="enableTyping()">Start Typing</button>
-        <!-- When someone will click it, it will be stop typing -->
         <button id="pauseResumeButton" onclick="togglePauseResume()">Pause Typing</button>
-        <!-- When someone will click it, it will be end typing -->
         <button id="endButton" onclick="endTyping()">End Typing</button>
       </div>
-      <!-- this is a section where will be show all the logs of the entire web application, like it will tell recording started, waiting for typing, started typing with 1 speed and so on.
-       means it's the logs showing section -->
-      <div class=" logger-showing-container">
+      
+      <!-- Logger section to display status updates and logs of activities -->
+      <div class="logger-showing-container">
         <div class="logger-showing-box-header">
           <div class="logger-showing-box-header-container">
             <p>Logger</p>
           </div>
         </div>
         <div class="logger-showing-box">
-          <textarea name="" id="logger" placeholder="Logger status here...."></textarea>
+          <textarea id="logger" placeholder="Logger status here...."></textarea>
         </div>
       </div>
     </div>
   </div>
+  
+  <!-- Middle container to display output and editor -->
   <div class="middle-container">
     <div class="middle-box-container">
-      <!-- এই Author bar section এর কোন কাজ নেই, এটি শুধু দেখতে শুন্দর করার জন্য রাখার হয়েছে -->
+      
+      <!-- Decorative author bar for aesthetic purposes -->
       <div class="authorbar-section">
         <div class="reload-icon display-alighn-center">
           <img src="./images/icons8-reload-96.png" alt="" />
@@ -79,67 +95,72 @@
           <img src="./images/icons8-youtube-100.png" alt="youtube icon" />
         </div>
       </div>
-      <!-- এটি হচ্ছে আউটপুট সেকশন, এর কাজ হচ্ছে, নিচে থাকা কোড এডিটর এ যখন "HTML , CSS , Javascript " ল্যাঙ্গুয়েজে এ কোড গুলো লিখা হবে, তার আউটপুট গুলো এখানে দেখাবে। -->
-      <div class="output-secion">
+      
+      <!-- Output section to show the rendered code's result -->
+      <div class="output-section">
         <div class="output-box">
           <div class="output-inner-box">
-            <!-- This is the example Caption "Loader Design Using Only HTML & CSS" -->
+            
+            <!-- Displays a caption above the output frame -->
             <div class="caption">Loader Design Using Only HTML & CSS</div>
-            <!-- this is the output frame, where you can see the output of your code -->
+            
+            <!-- iframe for rendering and displaying live output from the code editor -->
             <iframe id="output"></iframe>
           </div>
         </div>
       </div>
       
+      <!-- Tabs to switch between HTML, CSS, and JavaScript code editing modes -->
       <div class="language-tab-select-section">
-        <!-- By default HTML language tab will be selected -->
-        <!-- another thing, যখন যেই ট্যাব টি সিলেক্ট হবে তখন তাকে "selected-tab" এই ক্লাস টি দিতে হবে, এর দ্বারা একটি Border radius চলে আসবে Selected tab টিতে  -->
+        <!-- When a tab is selected, "selected-tab" class is added for highlighting -->
         <div class="html-language-tab selected-tab" id="htmlTab">
           <img src="./images/icons8-html-48.png" alt="" />
-          <button >HTML</button>
+          <button>HTML</button>
         </div>
         <div class="css-language-tab" id="cssTab">
           <img src="./images/icons8-css-48.png" alt="" />
-          <button >CSS</button>
+          <button>CSS</button>
         </div>
         <div class="javascript-language-tab" id="jsTab">
           <img src="./images/icons8-javascript-48.png" alt="" />
-          <button >JavaScript</button>
+          <button>JavaScript</button>
         </div>
       </div>
-      <!-- This is the code writing section -->
-      <!-- In this project, I used Ace Editor for coding. Ace is a code editor that is easily used by embadding in a web page. -->
-      <!-- Ace Editor is used for live coding, it's very easy to use and customize. -->
-      <!-- It's also very light weight and can be easily integrated into any web page. -->
-      <!-- আশা করি তুমি Ace code editor সম্পর্কে আগে থেকেই ভালো করে জানো। এটি আমার ওয়েবসাইট এ ব্যাবহার করছি কোড লিখার জন্য।  -->
-      <!-- উপরে জেটা বললাম, যেই language ট্যাব টি সিলেক্ট করা হবে, তখন এই Ace code editor টিও সেই ল্যাঙ্গুয়েজ এ সুইচ করে। -->
-      <!-- এই কোড এডিটরেই লেখা কোড গুলো render হয়ে উপরে অউটপুট দেখাবে, জেটা আগেও বললাম।  -->
+      
+      <!-- Ace Editor section for live coding in HTML, CSS, and JavaScript -->
       <div class="code-editor-section">
         <div id="editor"></div>
       </div>
     </div>
   </div>
-  <!-- This is the right container of the web page that will be shown on the right side of the web page. -->
+  
+  <!-- Right container for caption, recording time, and recording control buttons -->
   <div class="right-container">
     <div class="right-box-container">
+      
+      <!-- Section for inputting a caption, with a button to submit -->
       <div class="caption-box">
-        <input type="text" />
+        <input type="text" placeholder="Enter Caption" />
         <button>Push the caption</button>
       </div>
+      
+      <!-- Display of recording time with a static 00:00:00 format initially -->
       <div class="recording-time">
         <p>Recording Time :</p>
-        <img src="./images/icons8-recording-48.png" alt="">
+        <img src="./images/icons8-recording-48.png" alt="recording icon" />
         <p>00:00:00</p>
       </div>
+      
+      <!-- Buttons to start, end, or pause/resume recording activities -->
       <div class="recording-buttons">
         <button>Start Recording</button>
         <button>End Recording</button>
         <button>Pause/Resume</button>
       </div>
     </div>
+  </div>
 
-
-
-    <script src="./script/script.js"></script>
+  <!-- External JavaScript file for the application's functionality -->
+  <script src="./script/script.js"></script>
 </body>
 </html>
