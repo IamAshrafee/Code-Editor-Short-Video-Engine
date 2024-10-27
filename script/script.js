@@ -29,17 +29,31 @@ editor.setTheme("ace/theme/cloud9_night");
 editor.setOptions({
   enableBasicAutocompletion: false,
   enableLiveAutocompletion: false,
-  enableSnippets: false,
-  behavioursEnabled: false,
-  fontSize: "14px",
+  enableSnippets: true,
+  behavioursEnabled: true,
+  fontSize: "16px",
   showLineNumbers: true,
   tabSize: 4,
   wrap: true,
-  useSoftTabs: false,
-  autoIndent: false,
+  useSoftTabs: true,
+  autoIndent: true,
 });
 logStatus("-- Code Editor Initialized");
 logStatus("-- Selected theme 'cloud9_night'");
+
+        // Function to scroll to the latest line
+        function scrollToLatestLine() {
+            const lastRow = editor.session.getLength() - 1;  // Get the last row number
+            editor.scrollToLine(lastRow, true, true, function () {});  // Scroll to the last row
+        }
+
+        // Event listener to scroll automatically when content changes
+        editor.session.on('change', function() {
+            scrollToLatestLine();  // Call the function on each content change
+        });
+
+        // Enable language tools for autocompletion
+        ace.require("ace/ext/language_tools");
 
 // Variables to store code for HTML, CSS, and JavaScript tabs
 let htmlCode = "",
