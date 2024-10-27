@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Live Code Editor with HTML, CSS, and JavaScript</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-            height: 100vh;
-        }
-        .container {
-            display: flex;
-            width: 100%;
-            height: 90vh;
-        }
-        .editor-container {
-            width: 33%;
-            height: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        #preview {
-            width: 50%;
-            height: 100%;
-            border: 1px solid #ddd;
-        }
-        .editor-title {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-        .editor {
-            width: 100%;
-            height: 90%;
-            border: 1px solid #ddd;
-            font-size: 16px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        height: 100vh;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+        height: 90vh;
+      }
+      .editor-container {
+        width: 33%;
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      #preview {
+        width: 50%;
+        height: 100%;
+        border: 1px solid #ddd;
+      }
+      .editor-title {
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      .editor {
+        width: 100%;
+        height: 90%;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
     </style>
     <!-- Ace Code Editor CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js" 
-            integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA==" 
-            crossorigin="anonymous" 
-            referrerpolicy="no-referrer"></script>
-</head>
-<body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.3/ace.js"
+      integrity="sha512-l13f2Dlet80LPHc8rVTtou5W/g57iXICo6ejbKXNyQeTIhFxb4STvoJSaV7kFK/tmrIRIN4caTlpH6lxondKJA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
     <h1>Live Code Editor with HTML, CSS, and JavaScript</h1>
     <div class="container">
-        <!-- HTML Editor -->
-        <div class="editor-container">
-            <div class="editor-title">HTML</div>
-            <div id="htmlEditor" class="editor"></div>
-        </div>
-        <!-- CSS Editor -->
-        <div class="editor-container">
-            <div class="editor-title">CSS</div>
-            <div id="cssEditor" class="editor"></div>
-        </div>
-        <!-- JavaScript Editor -->
-        <div class="editor-container">
-            <div class="editor-title">JavaScript</div>
-            <div id="jsEditor" class="editor"></div>
-        </div>
-        <!-- Live Preview -->
-        <iframe id="preview"></iframe>
+      <!-- HTML Editor -->
+      <div class="editor-container">
+        <div class="editor-title">HTML</div>
+        <div id="htmlEditor" class="editor"></div>
+      </div>
+      <!-- CSS Editor -->
+      <div class="editor-container">
+        <div class="editor-title">CSS</div>
+        <div id="cssEditor" class="editor"></div>
+      </div>
+      <!-- JavaScript Editor -->
+      <div class="editor-container">
+        <div class="editor-title">JavaScript</div>
+        <div id="jsEditor" class="editor"></div>
+      </div>
+      <!-- Live Preview -->
+      <iframe id="preview"></iframe>
     </div>
 
     <script>
-        // Initialize Ace editors for HTML, CSS, and JavaScript
-        const htmlEditor = ace.edit("htmlEditor");
-        htmlEditor.setTheme("ace/theme/monokai");
-        htmlEditor.session.setMode("ace/mode/html");
-        htmlEditor.session.setValue(`<!DOCTYPE html>
+      // Initialize Ace editors for HTML, CSS, and JavaScript
+      const htmlEditor = ace.edit("htmlEditor");
+      htmlEditor.setTheme("ace/theme/monokai");
+      htmlEditor.session.setMode("ace/mode/html");
+      htmlEditor.session.setValue(`<!DOCTYPE html>
 <html>
 <body>
   <h2>Hello World</h2>
@@ -84,38 +86,39 @@
 </body>
 </html>`);
 
-        const cssEditor = ace.edit("cssEditor");
-        cssEditor.setTheme("ace/theme/monokai");
-        cssEditor.session.setMode("ace/mode/css");
-        cssEditor.session.setValue(`body {
+      const cssEditor = ace.edit("cssEditor");
+      cssEditor.setTheme("ace/theme/monokai");
+      cssEditor.session.setMode("ace/mode/css");
+      cssEditor.session.setValue(`body {
   font-family: Arial, sans-serif;
   text-align: center;
 }`);
 
-        const jsEditor = ace.edit("jsEditor");
-        jsEditor.setTheme("ace/theme/monokai");
-        jsEditor.session.setMode("ace/mode/javascript");
-        jsEditor.session.setValue(`console.log('Hello World');`);
+      const jsEditor = ace.edit("jsEditor");
+      jsEditor.setTheme("ace/theme/monokai");
+      jsEditor.session.setMode("ace/mode/javascript");
+      jsEditor.session.setValue(`console.log('Hello World');`);
 
-        // Function to update the iframe preview
-        function updatePreview() {
-            const htmlContent = htmlEditor.getValue();
-            const cssContent = "<style>" + cssEditor.getValue() + "</style>";
-            const jsContent = "<script>" + jsEditor.getValue() + "</" + "script>";
-            
-            const iframe = document.getElementById("preview").contentWindow.document;
-            iframe.open();
-            iframe.write(htmlContent + cssContent + jsContent);
-            iframe.close();
-        }
+      // Function to update the iframe preview
+      function updatePreview() {
+        const htmlContent = htmlEditor.getValue();
+        const cssContent = "<style>" + cssEditor.getValue() + "</style>";
+        const jsContent = "<script>" + jsEditor.getValue() + "</" + "script>";
 
-        // Attach the update function to the 'change' event for each editor
-        htmlEditor.session.on('change', updatePreview);
-        cssEditor.session.on('change', updatePreview);
-        jsEditor.session.on('change', updatePreview);
+        const iframe =
+          document.getElementById("preview").contentWindow.document;
+        iframe.open();
+        iframe.write(htmlContent + cssContent + jsContent);
+        iframe.close();
+      }
 
-        // Initial preview load
-        updatePreview();
+      // Attach the update function to the 'change' event for each editor
+      htmlEditor.session.on("change", updatePreview);
+      cssEditor.session.on("change", updatePreview);
+      jsEditor.session.on("change", updatePreview);
+
+      // Initial preview load
+      updatePreview();
     </script>
-</body>
+  </body>
 </html>
